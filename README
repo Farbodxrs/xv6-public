@@ -14,4 +14,5 @@ Its time to compile and run xv6 O.S., qemu seems fine but feel free to try new o
 
 *How to exit qemu :))
 press ctrl+a => c
-now you can exec in qemu, press q then enter to exit. 
+now you are in qemu console, press q then enter to exit.
+press ctrl + D to exit container, because of --rm in running it, container will be destroyed as you leave. 
