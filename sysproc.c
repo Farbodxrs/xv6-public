@@ -96,3 +96,10 @@ sys_getppid(void)
   return myproc()->parent->pid;
 }
 
+int
+sys_getchildren(int i)
+{
+
+  return i * 2;
+}
+
