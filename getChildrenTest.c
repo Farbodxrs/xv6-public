@@ -5,6 +5,7 @@ int main(void) {
 
     int child = fork();
     if (child == 0) {
+
         //parent
         printf(1, "process(child) : pid()= %d ppid()= %d getChildren(getppid())= %d\n",
                getpid(), getppid(), getchildren(getppid()));
