@@ -1,12 +1,16 @@
 #include "types.h"
-#include "stat.h"
 #include "user.h"
-#include "fcntl.h"
 
-int main(void)
-{
-	fork();
-	fork();
-	return 0;
-	
+int main(void) {
+    int parent = getpid();
+    int child = fork();
+    if(child == 0) {
+        printf(1, "child: parent=%d child=%d getpid()=%d getppid()=%d\n",
+                parent, child, getpid(), getppid());
+    } else {
+        wait();
+        printf(1, "parent: parent=%d child=%d getpid()=%d getppid()=%d\n",
+                parent, child, getpid(), getppid());
+    }
+    exit();
 }
