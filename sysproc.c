@@ -97,9 +97,20 @@ sys_getppid(void)
 }
 
 int
-sys_getchildren(int i)
+sys_getchildren(void)
 {
 
-  return i * 2;
+  int num;
+  argptr(0, (void *)&num, sizeof(num)); // extract and store argument into num
+  return num * num;
+
+  
 }
+
+
+
+
+
+
+
 
