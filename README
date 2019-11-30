@@ -9,7 +9,7 @@ As you know there are several ways to compile and run an O.S. but I strongly rec
 3-Run your container ($ docker run -v '/{Path to local xv6 folder}':/home/a/xv6/ -it --name xv6 --rm grantbot/xv6 bash )
 4-Now you are in the container, you should go into project ($ cd /home/a/xv6)
 Its time to compile and run xv6 O.S., qemu seems fine but feel free to try new ones. docs at https://www.qemu.org/documentation/
-5-As I dont have VGA console in container, I use make qemu-nox. (There is 'make qemu-nox-gdb' option which lets you to open a GDB port! whats gdb? =>https://sourceware.org/gdb/onlinedocs/gdb/Server.html) 
+5-As I dont have VGA console in container, I use($make) and then  ($make qemu-nox). (There is 'make qemu-nox-gdb' option which lets you to open a GDB port! whats gdb? =>https://sourceware.org/gdb/onlinedocs/gdb/Server.html) 
 
 
 *How to exit qemu :))
