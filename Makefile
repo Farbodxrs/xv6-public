@@ -183,6 +183,7 @@ UPROGS=\
 	_zombie\
 	_farbodTest\
 	_getChildrenTest\
+	_getppidTest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
