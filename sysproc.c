@@ -89,7 +89,6 @@ sys_getppid(void) {
 
 int
 sys_getchildren(void) {
-
     int num;
     argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
 
