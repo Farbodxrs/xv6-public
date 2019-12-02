@@ -92,7 +92,13 @@ sys_getchildren(void) {
     int num;
     argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
     return getchild(num); // call get child method in proc.c
+}
 
+int
+sys_getcalledcount(void) {
+    int num;
+    argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
+    return getcalled(num); // call get child method in proc.c
 }
 
 
