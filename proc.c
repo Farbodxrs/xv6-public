@@ -535,6 +535,7 @@ getchild(int i) {
 }
 
 
+int
 getcalled(int i) {
     struct proc *p = myproc();
     return (p->called[i]);

@@ -8,7 +8,20 @@ int main(int argc, char **argv) {
         printf(1, "You must provide one argument\n");
         exit();
     }
-    int input = 4;
-    get
+    int input = 22;
+
+    int a = getppid();
+    a = getppid();
+    a = getppid();
+    a = getppid();
+
+    int res = getcalledcount(input);
+    printf(1, "desired sys call, called : %d times \n", res);
+
+
+    //this following line is because of this err : error: variable 'a' set but not used [-Werror=unused-but-set-variable]
+    if(a>5)
+        exit();
+
     exit();
 }
