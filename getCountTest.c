@@ -9,5 +9,6 @@ int main(int argc, char **argv) {
         exit();
     }
     int input = 4;
+    get
     exit();
 }

@@ -23,9 +23,8 @@ extern void trapret(void);
 static void wakeup1(void *chan);
 
 void
-pinit(void)
-{
-  initlock(&ptable.lock, "ptable");
+pinit(void) {
+    initlock(&ptable.lock, "ptable");
 }
 
 // Must be called with interrupts disabled
