@@ -14,6 +14,7 @@ sys_fork(void) {
 
 int
 sys_exit(void) {
+    cleanGetCalled();
     exit();
     return 0;  // not reached
 }
@@ -25,6 +26,7 @@ sys_wait(void) {
 
 int
 sys_kill(void) {
+    cleanGetCalled();
     int pid;
 
     if (argint(0, &pid) < 0)

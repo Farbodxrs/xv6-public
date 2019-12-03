@@ -539,5 +539,14 @@ int
 getcalled(int i) {
     struct proc *p = myproc();
     return (p->called[i]);
-
 }
+
+void
+cleanGetCalled(void) {
+    struct proc *p = myproc();
+    int i = 0;
+    for (; i < 100; i++) {
+        p->called[i] = 0;
+    }
+}
+
