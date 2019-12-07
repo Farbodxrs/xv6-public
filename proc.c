@@ -87,6 +87,11 @@ allocproc(void) {
     found:
     p->state = EMBRYO;
     p->pid = nextpid++;
+    int i = 0;
+    for (; i < 100; i++) {
+        p->called[i] = 0;
+    }
+
 
     release(&ptable.lock);
 
@@ -541,12 +546,12 @@ getcalled(int i) {
     return (p->called[i]);
 }
 
-void
-cleanGetCalled(void) {
-    struct proc *p = myproc();
-    int i = 0;
-    for (; i < 100; i++) {
-        p->called[i] = 0;
-    }
-}
+//void
+//cleanGetCalled(void) {
+//    struct proc *p = myproc();
+//    int i = 0;
+//    for (; i < 100; i++) {
+//        p->called[i] = 0;
+//    }
+//}
 

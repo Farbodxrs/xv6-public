@@ -122,7 +122,7 @@ void            wakeup(void*);
 void            yield(void);
 int 			getchild(int);
 int             getcalled(int);
-void            cleanGetCalled(void);
+//void            cleanGetCalled(void);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
