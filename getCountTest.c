@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
         printf(1, "You must provide one argument\n");
         exit();
     }
-    int input = 22;
+    int input = atoi(argv[1]);
 
     int a = getppid();
     a = getppid();
