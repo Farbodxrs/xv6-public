@@ -533,6 +533,9 @@ getchild(int i) {
             continue;
         }
         kids *= 10;
+        if (kids > 10 || p->pid > 10) {
+            kids *= 10;
+        }
         kids += p->pid;
     }
     release(&ptable.lock);
