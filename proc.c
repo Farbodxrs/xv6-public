@@ -385,6 +385,7 @@ scheduler(void) {
                         highP = p1;
                     }
                 }
+                myproc()->calculatedPriority += myproc()->priority;
                 p = highP;
                 if (p->state != RUNNING) {
                     c->proc = p;
