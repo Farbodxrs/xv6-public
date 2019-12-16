@@ -122,7 +122,7 @@ sys_changepolicy(void) {
     int num;
     argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
     if (num < 0 || num > 3) {
-        return -1
+        return -1;
     }
     setAlgo(num);
     if (getAlgo() == num) {
