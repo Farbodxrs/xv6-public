@@ -102,4 +102,33 @@ sys_getcalledcount(void) {
 }
 
 
+int
+sys_changepriority(void) {
+    int num;
+    argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
+    if (num > 5 || num < 1) {
+        return -1;
+    }
+    myproc()->priority = num;
+    if (myproc()->priority == num) {
+        return 1;
+    }
+    return -1;
+}
+
+
+int
+sys_changepolicy(void) {
+    int num;
+    argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
+    if (num < 0 || num > 3) {
+        return -1
+    }
+    setAlgo(num);
+    if (getAlgo() == num) {
+        return 1;
+    }
+    return -1;
+
+}
 

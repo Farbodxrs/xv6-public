@@ -26,6 +26,8 @@ int uptime(void);
 int getppid(void);
 int getchildren(int);
 int getcalledcount(int);
+int changepriority(int);
+int changepolicy(int);
 
 // ulib.c
 int stat(const char*, struct stat*);

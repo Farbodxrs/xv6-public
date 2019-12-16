@@ -23,3 +23,5 @@
 #define SYS_getppid 22
 #define SYS_getchildren 23
 #define SYS_getcalledcount 24
+#define SYS_changepriority 25
+#define SYS_changepolicy 26

@@ -60,7 +60,7 @@ argptr(int n, char **pp, int size)
 {
   int i;
   struct proc *curproc = myproc();
- 
+
   if(argint(n, &i) < 0)
     return -1;
   if(size < 0 || (uint)i >= curproc->sz || (uint)i+size > curproc->sz)
@@ -106,6 +106,8 @@ extern int sys_uptime(void);
 extern int sys_getppid(void);
 extern int sys_getchildren(void);
 extern int sys_getcalledcount(void);
+extern int sys_changepriority(void);
+extern int sys_changepolicy(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -131,7 +133,9 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_getppid] sys_getppid,
 [SYS_getchildren] sys_getchildren,
-[SYS_getcalledcount] sys_getcalledcount
+[SYS_getcalledcount] sys_getcalledcount,
+[SYS_changepriority] sys_changepriority,
+[SYS_changepolicy] sys_changepriority
 };
 
 void
