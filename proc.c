@@ -604,6 +604,9 @@ getAlgo(void) {
     return algorithm;
 }
 
+void setAlgo(int algo){
+    algorithm = algo;
+}
 
 //void
 //cleanGetCalled(void) {
