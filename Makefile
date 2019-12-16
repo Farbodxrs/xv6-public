@@ -184,6 +184,7 @@ UPROGS=\
 	_getChildrenTest\
 	_getppidTest\
 	_getCountTest\
+	_priority\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
