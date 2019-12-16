@@ -386,20 +386,17 @@ scheduler(void) {
                     }
                 }
                 p = highP;
-                c->proc = p;
-                switchuvm(p);
-                p->state = RUNNING;
-
-                swtch(&(c->scheduler), p->context);
-                switchkvm();
-
-                // Process is done running for now.
-                // It should have changed its p->state before coming back.
-                c->proc = 0;
-
+                if (p->state != RUNNING) {
+                    c->proc = p;
+                    switchuvm(p);
+                    p->state = RUNNING;
+                    swtch(&(c->scheduler), p->context);
+                    switchkvm();
+                    // Process is done running for now.
+                    // It should have changed its p->state before coming back.
+                    c->proc = 0;
+                }
                 release(&ptable.lock);
-
-
             }
         }
     }
