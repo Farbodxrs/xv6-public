@@ -122,6 +122,7 @@ void            wakeup(void*);
 void            yield(void);
 int 			getchild(int);
 int             getcalled(int);
+int             getAlgo(void);
 //void            cleanGetCalled(void);
 
 // swtch.S

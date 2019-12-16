@@ -15,6 +15,7 @@ struct {
 static struct proc *initproc;
 
 int nextpid = 1;
+int algorithm = 0;
 
 extern void forkret(void);
 
@@ -577,6 +578,12 @@ getcalled(int i) {
     struct proc *p = myproc();
     return (p->called[i]);
 }
+
+int
+getAlgo(void) {
+    return algorithm;
+}
+
 
 //void
 //cleanGetCalled(void) {
