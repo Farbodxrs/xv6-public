@@ -123,6 +123,7 @@ void            yield(void);
 int 			getchild(int);
 int             getcalled(int);
 int             getAlgo(void);
+void            setAlgo(int);
 //void            cleanGetCalled(void);
 
 // swtch.S
