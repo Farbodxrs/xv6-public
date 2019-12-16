@@ -7,6 +7,8 @@
 #include "proc.h"
 #include "spinlock.h"
 
+#define maxUnsignedInt 184467440737015
+
 struct {
     struct spinlock lock;
     struct proc proc[NPROC];
@@ -74,6 +76,7 @@ myproc(void) {
 static struct proc *
 allocproc(void) {
     struct proc *p;
+    struct proc *pp;
     char *sp;
 
     acquire(&ptable.lock);
@@ -88,13 +91,21 @@ allocproc(void) {
     found:
     p->state = EMBRYO;
     p->pid = nextpid++;
-    int i = 0;
+    unsigned long long int minCalculatedPriority = maxUnsignedInt;
+    for (pp = ptable.proc; pp < &ptable.proc[NPROC]; pp++) {
+        if (pp->calculatedPriority < minCalculatedPriority) {
+            minCalculatedPriority = pp->calculatedPriority;
+        }
+    }
+    if (minCalculatedPriority == maxUnsignedInt) {
+        minCalculatedPriority = 0;
+    }
     p->priority = 5;
+    p->calculatedPriority = minCalculatedPriority;
+    int i = 0;
     for (; i < 100; i++) {
         p->called[i] = 0;
     }
-
-
     release(&ptable.lock);
 
     // Allocate kernel stack.
@@ -323,9 +334,10 @@ wait(void) {
 void
 scheduler(void) {
     struct proc *p;
-    //struct proc *highP = 0;
+    struct proc *p1;
     struct cpu *c = mycpu();
     c->proc = 0;
+//    struct proc *p1; // in case of
 
     for (;;) {
         // Enable interrupts on this processor.
@@ -354,17 +366,26 @@ scheduler(void) {
             }
             release(&ptable.lock);
         }
-        if (algorithm == 2) {
 
+        if (algorithm == 2) {
+            struct proc *highP = 0;
 
             acquire(&ptable.lock);
-            for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
-                if (p->state != RUNNABLE)
-                    continue;
 
-                // Switch to chosen process.  It is the process's job
-                // to release ptable.lock and then reacquire it
-                // before jumping back to us.
+            for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+                if (p->state != RUNNABLE) {
+                    continue;
+                }
+                highP = p;
+                for (p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++) {
+                    if (p1->state != RUNNABLE) {
+                        continue;
+                    }
+                    if (p1->calculatedPriority < highP->calculatedPriority) {
+                        highP = p1;
+                    }
+                }
+                p = highP;
                 c->proc = p;
                 switchuvm(p);
                 p->state = RUNNING;
@@ -375,10 +396,11 @@ scheduler(void) {
                 // Process is done running for now.
                 // It should have changed its p->state before coming back.
                 c->proc = 0;
+
+                release(&ptable.lock);
+
+
             }
-            release(&ptable.lock);
-
-
         }
     }
 }
