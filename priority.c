@@ -3,7 +3,7 @@
 
 int main(void) {
 
-    int i = changepriority(2);
-    printf(1,"This should print calculated : 1 :  : %d \n", i);
+    int i = fpolicy(200);
+    printf(1, "This should print POLICY :  :  : %d \n", i);
     exit();
 }

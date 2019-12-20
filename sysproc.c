@@ -123,6 +123,8 @@ int
 sys_changepolicy(void) {
     int num;
     argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
+    cprintf("THSI IS CPRINTF");
+    return num * 3;
     if (num < 0 || num > 3) {
         return -1;
     }
@@ -134,3 +136,9 @@ sys_changepolicy(void) {
 
 }
 
+int
+sys_fpolicy(void) {
+    int num;
+    argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
+    return num * 5;
+}

@@ -24,4 +24,5 @@
 #define SYS_getchildren 23
 #define SYS_getcalledcount 24
 #define SYS_changepriority 25
-#define SYS_changepolicy 26
+#define SYS_changepolicy 26 //this do not work use below one instead
+#define SYS_fpolicy    27
