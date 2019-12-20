@@ -52,11 +52,11 @@ struct proc {
   int called[100];
   int priority;
   unsigned long long  calculatedPriority;
-  unsigned long long creationTime;
-  unsigned long long terminationTime;
-  unsigned long long sleepingTime;
-  unsigned long long readyTime;
-  unsigned long long readyTime;
+//  unsigned long long creationTime;
+//  unsigned long long terminationTime;
+//  unsigned long long sleepingTime;
+//  unsigned long long readyTime;
+//  unsigned long long readyTime;
 };
 
 // Process memory is laid out contiguously, low addresses first:
