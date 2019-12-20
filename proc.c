@@ -17,7 +17,7 @@ struct {
 static struct proc *initproc;
 
 int nextpid = 1;
-int algorithm = 0;
+int algorithm = 1;
 
 extern void forkret(void);
 
@@ -338,7 +338,6 @@ scheduler(void) {
     struct cpu *c = mycpu();
     c->proc = 0;
 //    struct proc *p1; // in case of
-
     for (;;) {
         // Enable interrupts on this processor.
         sti();
@@ -366,13 +365,9 @@ scheduler(void) {
             }
             release(&ptable.lock);
         }
-
         if (algorithm == 2) {
-//            cprintf("ALGO IS 2");
             struct proc *highP = 0;
-
             acquire(&ptable.lock);
-
             for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
                 if (p->state != RUNNABLE) {
                     continue;
@@ -382,13 +377,13 @@ scheduler(void) {
                     if (p1->state != RUNNABLE) {
                         continue;
                     }
-                    if (p1->calculatedPriority < highP->calculatedPriority) {
+                    if (p1->calculatedPriority < highP->calculatedPriority)
                         highP = p1;
-                    }
                 }
-                myproc()->calculatedPriority += myproc()->priority;
-                p = highP;
-                if (p->state != RUNNING) {
+                p->calculatedPriority += p->priority;
+                //cprintf("Calculated priority is for pid : %s : %d \n", p->name, p->calculatedPriority);
+                if (highP->state != RUNNING) {
+                    p = highP;
                     c->proc = p;
                     switchuvm(p);
                     p->state = RUNNING;
@@ -398,8 +393,8 @@ scheduler(void) {
                     // It should have changed its p->state before coming back.
                     c->proc = 0;
                 }
-                release(&ptable.lock);
             }
+            release(&ptable.lock);
         }
     }
 }
@@ -605,7 +600,7 @@ getAlgo(void) {
     return algorithm;
 }
 
-void setAlgo(int algo){
+void setAlgo(int algo) {
     algorithm = algo;
 }
 

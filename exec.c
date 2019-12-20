@@ -94,12 +94,13 @@ exec(char *path, char **argv)
   safestrcpy(curproc->name, last, sizeof(curproc->name));
 
   // Commit to the user image.
-  //TODO : check here
   oldpgdir = curproc->pgdir;
   curproc->pgdir = pgdir;
   curproc->sz = sz;
   curproc->tf->eip = elf.entry;  // main
   curproc->tf->esp = sp;
+  curproc->priority=5;
+  curproc->calculatedPriority = 1;//sh
   switchuvm(curproc);
   freevm(oldpgdir);
   return 0;
