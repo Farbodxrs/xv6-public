@@ -14,6 +14,7 @@ sys_fork(void) {
 
 int
 sys_exit(void) {
+    myproc()->terminationTime = ticks;
     exit();
     return 0;  // not reached
 }
@@ -156,7 +157,11 @@ int
 sys_waitForChild(void) {
     struct timeVariables *t;
     argptr(0, (void *) &t, sizeof(t));
-    return t->readyTime * t->runningTime;//debug
+    myproc()->creationTime = t->creationTime;
+    myproc()->terminationTime = t->terminationTime;
+    myproc()->sleepingTime = t->sleepingTimel;
+    myproc()->readyTime = t->readyTime;
+    t->runningTime = t->runningTime;
+    return wait();
 
-    return num * 7;
 }

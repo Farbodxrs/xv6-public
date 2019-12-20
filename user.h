@@ -30,7 +30,7 @@ int getcalledcount(int);
 int changepriority(int);
 int changepolicy(int);
 int fpolicy(int);
-int waitForChild(timeVariables*);
+int waitForChild(struct timeVariables *t);
 // ulib.c
 int stat(const char*, struct stat*);
 char* strcpy(char*, const char*);
