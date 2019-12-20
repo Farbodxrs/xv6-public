@@ -125,6 +125,7 @@ int             getcalled(int);
 int             getAlgo(void);
 void            setAlgo(int);
 //void            cleanGetCalled(void);
+void updateTimeComparison(void);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

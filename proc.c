@@ -609,6 +609,29 @@ void setAlgo(int algo) {
     algorithm = algo;
 }
 
+struct proc *pp2;
+
+void updateTimeComparison(void) {
+    for (pp2 = ptable.proc; pp2 < &ptable.proc[NPROC]; pp2++) {
+        if (pp2->state == ZOMBIE) {
+            break;
+        }
+        if (pp2->state == SLEEPING) {
+            pp2->sleepingTime++;
+            break;
+        }
+        if (pp2->state == RUNNING) {
+            pp2->runningTime++;
+            break;
+        }
+        if (pp2->state == RUNNABLE) {
+            pp2->readyTime++;
+            break;
+        }
+
+    }
+}
+
 //void
 //cleanGetCalled(void) {
 //    struct proc *p = myproc();
