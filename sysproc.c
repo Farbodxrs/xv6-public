@@ -140,5 +140,14 @@ int
 sys_fpolicy(void) {
     int num;
     argptr(0, (void *) &num, sizeof(num)); // extract and store argument into num
-    return num * 5;
+    if (num > 2 || num < 0) {
+        return -1;
+    }
+//    cprintf("GET ALGO IS first : : %d\n", getAlgo());
+    setAlgo(num);
+//    cprintf("GET ALGO IS second : : %d\n", getAlgo());
+    if (getAlgo() == num) {
+        return 1;
+    }
+    return -1;
 }

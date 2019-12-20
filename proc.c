@@ -368,6 +368,7 @@ scheduler(void) {
         }
 
         if (algorithm == 2) {
+//            cprintf("ALGO IS 2");
             struct proc *highP = 0;
 
             acquire(&ptable.lock);
