@@ -159,7 +159,7 @@ sys_waitForChild(void) {
     argptr(0, (void *) &t, sizeof(t));
     myproc()->creationTime = t->creationTime;
     myproc()->terminationTime = t->terminationTime;
-    myproc()->sleepingTime = t->sleepingTimel;
+    myproc()->sleepingTime = t->sleepingTime;
     myproc()->readyTime = t->readyTime;
     t->runningTime = t->runningTime;
     return wait();
