@@ -91,6 +91,11 @@ allocproc(void) {
     found:
     p->state = EMBRYO;
     p->pid = nextpid++;
+    p->creationTime = ticks;
+    p->terminationTime = 0;
+    p->sleepingTime = 0;
+    p->readyTime = 0;
+    p->runningTime = 0;
     unsigned long long int minCalculatedPriority = maxUnsignedInt;
     for (pp = ptable.proc; pp < &ptable.proc[NPROC]; pp++) {
         if (pp->calculatedPriority < minCalculatedPriority) {
