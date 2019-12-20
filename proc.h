@@ -59,6 +59,14 @@ struct proc {
   uint runningTime;
 };
 
+struct timeVariables {
+    uint creationTime;
+    uint terminationTime;
+    uint sleepingTime;
+    uint readyTime;
+    uint runningTime;
+};
+
 // Process memory is laid out contiguously, low addresses first:
 //   text
 //   original data and bss
