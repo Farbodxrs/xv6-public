@@ -109,11 +109,13 @@ sys_changepriority(void) {
     if (num > 5 || num < 1) {
         return -1;
     }
+    //cprintf("CPRINTF : priority before is  : %d",myproc()->priority);
     myproc()->priority = num;
+    //cprintf("CPRINTF : priority after is  : %d",myproc()->priority);
     if (myproc()->priority == num) {
         return 1;
     }
-    return -1;
+    return 1;
 }
 
 

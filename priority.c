@@ -3,6 +3,7 @@
 
 int main(void) {
 
-    printf(1,"THIS SYSCALL IS WORKING")
+    int i = changepriority(2);
+    printf(1,"This should print calculated : 1 :  : %d \n", i);
     exit();
 }
