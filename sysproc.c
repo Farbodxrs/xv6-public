@@ -151,3 +151,12 @@ sys_fpolicy(void) {
     }
     return -1;
 }
+
+int
+sys_waitForChild(void) {
+    struct timeVariables *t;
+    argptr(0, (void *) &t, sizeof(t));
+    return t->readyTime * t->runningTime;//debug
+
+    return num * 7;
+}
