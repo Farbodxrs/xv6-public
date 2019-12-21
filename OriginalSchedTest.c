@@ -25,9 +25,6 @@ int main(void) {
     }
     waitForChild(&t[getpid()]);
 
-
-}
-
 exit();
 
 }
