@@ -12,22 +12,16 @@ struct timeVariables {
 
 
 int main(void) {
-    fpolicy(2);//modified xv6 original
-    ;
-    int i[1000];
+    fpolicy(2);//priority
+    int i = 0
     while (i < 5) {
         fork();
         i++;
     }
-    changepriority();
+    changepriority(i);
     for (; j < 1000; ++j) {
         printf(1, "[%d] : [%d]\n", getpid(), j);
     }
     waitForChild(&t[getpid()]);
-
-
-}
-
-exit();
-
+    exit();
 }
