@@ -13,7 +13,8 @@ struct timeVariables {
 
 int main(void) {
     fpolicy(2);//priority
-    int i = 0
+    int i = 0;
+    int j = 0;
     while (i < 5) {
         fork();
         i++;
