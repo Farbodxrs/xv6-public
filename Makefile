@@ -186,6 +186,7 @@ UPROGS=\
 	_getCountTest\
 	_priority\
 	_OriginalSchedTest\
+	_PrioritySchedTest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

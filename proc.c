@@ -613,18 +613,23 @@ struct proc *pp2;
 
 void updateTimeComparison(void) {
     for (pp2 = ptable.proc; pp2 < &ptable.proc[NPROC]; pp2++) {
-        if (pp2->state == ZOMBIE) {
+        if (pp2->state == ZOMBIE && pp2->terminationTime == 0) {
+//            cprintf("Zombie");
+            pp2->terminationTime = ticks;
             break;
         }
-        if (pp2->state == SLEEPING) {
-            pp2->sleepingTime++;
+        if (pp2->state == SLEEPING && pp2->terminationTime == 0) {
+//            cprintf("sleep");
+            pp2->terminationTime = ticks;
             break;
         }
         if (pp2->state == RUNNING) {
+//            cprintf("running");
             pp2->runningTime++;
             break;
         }
         if (pp2->state == RUNNABLE) {
+//            cprintf("runable");
             pp2->readyTime++;
             break;
         }

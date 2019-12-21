@@ -120,6 +120,7 @@ sys_changepriority(void) {
 }
 
 
+//change policy not working, use below one
 int
 sys_changepolicy(void) {
     int num;
@@ -157,11 +158,10 @@ int
 sys_waitForChild(void) {
     struct timeVariables *t;
     argptr(0, (void *) &t, sizeof(t));
-    myproc()->creationTime = t->creationTime;
-    myproc()->terminationTime = t->terminationTime;
-    myproc()->sleepingTime = t->sleepingTime;
-    myproc()->readyTime = t->readyTime;
+    t->creationTime = myproc()->creationTime;
+    t->terminationTime = myproc()->terminationTime;
+    t->sleepingTime = myproc()->sleepingTime;
+    t->readyTime = myproc()->readyTime;
     t->runningTime = t->runningTime;
     return wait();
-
 }

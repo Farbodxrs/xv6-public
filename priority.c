@@ -10,14 +10,14 @@ struct timeVariables {
 } t;
 
 int main(void) {
-    t.runningTime = 6;
-    t.readyTime = 9;
-    t.sleepingTime = 2;
-    t.terminationTime = 3;
-    t.creationTime = 5;
+    fork();
+    fork();
+    fork();
 
-    int i = waitForChild(&t);
-    printf(1, "WAIT FOR CHILD %d \n", i);
+    waitForChild(&t);
+    waitForChild(&t);
+
+    printf(1, "CREATION TIME[%d] : %d\n", getpid(), t.creationTime);
 
     exit();
 }

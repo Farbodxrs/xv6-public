@@ -12,14 +12,14 @@ struct timeVariables {
 
 
 int main(void) {
-    fpolicy(1);//modified xv6 original
+    fpolicy(2);//modified xv6 original
     ;
-    int i = 0;
-    while (i < 10) {
+    int i[1000];
+    while (i < 5) {
         fork();
         i++;
     }
-    int j = 0;
+    changepriority();
     for (; j < 1000; ++j) {
         printf(1, "[%d] : [%d]\n", getpid(), j);
     }
